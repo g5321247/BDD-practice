@@ -13,8 +13,8 @@
 		C8BE046024E7B77000D080C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8BE045E24E7B77000D080C4 /* Main.storyboard */; };
 		C8BE046224E7B77400D080C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8BE046124E7B77400D080C4 /* Assets.xcassets */; };
 		C8BE046524E7B77400D080C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8BE046324E7B77400D080C4 /* LaunchScreen.storyboard */; };
-		C8BE047024E7B77400D080C4 /* iOSLeadEssentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE046F24E7B77400D080C4 /* iOSLeadEssentialTests.swift */; };
-		C8BE047C24E7B7EC00D080C4 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE047A24E7B7DC00D080C4 /* FeedLoader.swift */; };
+		C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */; };
+		C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +37,9 @@
 		C8BE046424E7B77400D080C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8BE046624E7B77400D080C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8BE046B24E7B77400D080C4 /* iOSLeadEssentialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLeadEssentialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8BE046F24E7B77400D080C4 /* iOSLeadEssentialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLeadEssentialTests.swift; sourceTree = "<group>"; };
+		C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoadeTests.swift; sourceTree = "<group>"; };
 		C8BE047124E7B77400D080C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8BE047A24E7B7DC00D080C4 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				C8BE045824E7B77000D080C4 /* AppDelegate.swift */,
 				C8BE045A24E7B77000D080C4 /* SceneDelegate.swift */,
 				C8BE045C24E7B77000D080C4 /* ViewController.swift */,
-				C8BE047A24E7B7DC00D080C4 /* FeedLoader.swift */,
+				C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */,
 				C8BE045E24E7B77000D080C4 /* Main.storyboard */,
 				C8BE046124E7B77400D080C4 /* Assets.xcassets */,
 				C8BE046324E7B77400D080C4 /* LaunchScreen.storyboard */,
@@ -96,7 +96,7 @@
 		C8BE046E24E7B77400D080C4 /* iOSLeadEssentialTests */ = {
 			isa = PBXGroup;
 			children = (
-				C8BE046F24E7B77400D080C4 /* iOSLeadEssentialTests.swift */,
+				C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */,
 				C8BE047124E7B77400D080C4 /* Info.plist */,
 			);
 			path = iOSLeadEssentialTests;
@@ -205,7 +205,7 @@
 			files = (
 				C8BE045D24E7B77000D080C4 /* ViewController.swift in Sources */,
 				C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */,
-				C8BE047C24E7B7EC00D080C4 /* FeedLoader.swift in Sources */,
+				C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */,
 				C8BE045B24E7B77000D080C4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8BE047024E7B77400D080C4 /* iOSLeadEssentialTests.swift in Sources */,
+				C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

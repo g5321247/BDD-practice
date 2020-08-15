@@ -9,36 +9,37 @@
 import XCTest
 @testable import iOSLeadEssential
 
-class iOSLeadEssentialTests: XCTestCase {
+class RemoteFeedLoadeTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
-        let client = HTTPClientSpy()
-        let url = URL(string: "https://www.youtube.com/")!
-        let _ = FeedLoader(
-            client: client,
-            url: url
-        )
-
+        let (_, client) = makeSUT()
         XCTAssertNil(client.requestURL)
     }
 
     func test_load_requestDataFromURL() {
-        let client = HTTPClientSpy()
         let url = URL(string: "https://www.youtube.com/")!
-        let sut = FeedLoader(
-            client: client,
-            url: url
-        )
-
+        let (sut, client) = makeSUT()
         sut.load()
         XCTAssertEqual(client.requestURL, url)
     }
 
 
+
 }
 
-// MARK: Client Spy
-private extension iOSLeadEssentialTests {
+// MARK: Helper
+private extension RemoteFeedLoadeTests {
+
+    func makeSUT(url: URL = URL(string: "https://www.youtube.com/")!) -> (sut:  RemoteFeedLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = RemoteFeedLoader(
+            client: client,
+            url: url
+        )
+
+        return (sut: sut, client: client)
+    }
+
     class HTTPClientSpy: HTTPClient {
         var requestURL: URL?
 

@@ -12,7 +12,7 @@ protocol HTTPClient {
     func get(from: URL)
 }
 
-struct FeedLoader {
+struct RemoteFeedLoader {
     private let client: HTTPClient
     private let url: URL
 
