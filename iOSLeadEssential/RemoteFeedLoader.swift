@@ -25,7 +25,7 @@ struct RemoteFeedLoader {
         self.url = url
     }
 
-    func load(completion: @escaping (Error) -> Void = {_ in }) {
+    func load(completion: @escaping (Error) -> Void) {
         client.get(from: url, completion: { err in
             completion(.connectivity)
         })
