@@ -11,24 +11,39 @@ import XCTest
 
 class iOSLeadEssentialTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_init_doesNotRequestDataFromURL() {
+        let client = HTTPClientSpy()
+        let url = URL(string: "https://www.youtube.com/")!
+        let _ = FeedLoader(
+            client: client,
+            url: url
+        )
+
+        XCTAssertNil(client.requestURL)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_load_requestDataFromURL() {
+        let client = HTTPClientSpy()
+        let url = URL(string: "https://www.youtube.com/")!
+        let sut = FeedLoader(
+            client: client,
+            url: url
+        )
+
+        sut.load()
+        XCTAssertEqual(client.requestURL, url)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+}
+
+// MARK: Client Spy
+private extension iOSLeadEssentialTests {
+    class HTTPClientSpy: HTTPClient {
+        var requestURL: URL?
+
+        func get(from url: URL) {
+            requestURL = url
         }
     }
-
 }
