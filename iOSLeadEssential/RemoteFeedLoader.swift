@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HTTPClient {
-    func get(from: URL, completion: @escaping (Error) -> Void)
+    func get(from url: URL, completion: @escaping (Result<HTTPURLResponse, Error>) -> Void)
 }
 
 struct RemoteFeedLoader {
@@ -18,6 +18,7 @@ struct RemoteFeedLoader {
 
     enum Error: Swift.Error {
         case connectivity
+        case invalidData
     }
 
     init(client: HTTPClient, url: URL) {
@@ -26,8 +27,16 @@ struct RemoteFeedLoader {
     }
 
     func load(completion: @escaping (Error) -> Void) {
-        client.get(from: url, completion: { err in
-            completion(.connectivity)
+        client.get(from: url, completion: { (result) in
+
+            switch result {
+            case .success(let response):
+                if response.statusCode != 200 {
+                    completion(.invalidData)
+                }
+            case .failure(_):
+                completion(.connectivity)
+            }
         })
     }
 }
