@@ -8,9 +8,18 @@
 
 import Foundation
 
-struct FeedItem: Equatable {
+struct FeedItem: Equatable, Decodable {
     let id: UUID
     let description: String?
     let location: String?
     let imageURL: URL
+}
+
+extension FeedItem {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case description
+        case location
+        case imageURL = "image"
+    }
 }

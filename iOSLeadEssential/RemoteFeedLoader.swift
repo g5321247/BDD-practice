@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol HTTPClient {
     typealias HTTPResult = Result<(Data, HTTPURLResponse), Error>
 
@@ -40,8 +39,8 @@ struct RemoteFeedLoader {
             switch result {
             case .success(let data, _):
 //                if response.statusCode != 200 {
-                if let _ = try? JSONSerialization.jsonObject(with: data, options: []) {
-                    completion(.success([]))
+                if let root = try? JSONDecoder().decode(Root.self, from: data) {
+                    completion(.success(root.items))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -54,6 +53,6 @@ struct RemoteFeedLoader {
     }
 }
 
-//private struct Root {
-//    let items: [FeedItem]
-//}
+private struct Root: Decodable {
+    let items: [FeedItem]
+}
