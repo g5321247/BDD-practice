@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C4D1389924EB7DFA009FE2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D1389824EB7DFA009FE2A1 /* Main.storyboard */; };
+		C839166124EB825200E96B5A /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839166024EB825200E96B5A /* FeedItem.swift */; };
 		C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE045824E7B77000D080C4 /* AppDelegate.swift */; };
 		C8BE045B24E7B77000D080C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE045A24E7B77000D080C4 /* SceneDelegate.swift */; };
 		C8BE045D24E7B77000D080C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE045C24E7B77000D080C4 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		C4D1389824EB7DFA009FE2A1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C839166024EB825200E96B5A /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		C8BE045524E7B77000D080C4 /* iOSLeadEssential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSLeadEssential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8BE045824E7B77000D080C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8BE045A24E7B77000D080C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				C8BE045C24E7B77000D080C4 /* ViewController.swift */,
 				C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */,
 				C4D1389824EB7DFA009FE2A1 /* Main.storyboard */,
+				C839166024EB825200E96B5A /* FeedItem.swift */,
 				C8BE046124E7B77400D080C4 /* Assets.xcassets */,
 				C8BE046324E7B77400D080C4 /* LaunchScreen.storyboard */,
 				C8BE046624E7B77400D080C4 /* Info.plist */,
@@ -206,6 +209,7 @@
 				C8BE045D24E7B77000D080C4 /* ViewController.swift in Sources */,
 				C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */,
 				C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */,
+				C839166124EB825200E96B5A /* FeedItem.swift in Sources */,
 				C8BE045B24E7B77000D080C4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
