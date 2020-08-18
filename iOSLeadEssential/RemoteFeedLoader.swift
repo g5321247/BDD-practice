@@ -38,9 +38,14 @@ struct RemoteFeedLoader {
         client.get(from: url, completion: { (result) in
 
             switch result {
-            case .success(let response):
+            case .success(let data, _):
 //                if response.statusCode != 200 {
-                completion(.failure(.invalidData))
+                if let _ = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    completion(.success([]))
+                } else {
+                    completion(.failure(.invalidData))
+                }
+
 //                }
             case .failure(_):
                 completion(.failure(.connectivity))
@@ -49,4 +54,6 @@ struct RemoteFeedLoader {
     }
 }
 
-
+//private struct Root {
+//    let items: [FeedItem]
+//}
