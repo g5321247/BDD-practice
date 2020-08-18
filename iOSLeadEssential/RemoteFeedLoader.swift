@@ -24,21 +24,26 @@ struct RemoteFeedLoader {
         case invalidData
     }
 
+    enum Result: Equatable {
+        case success([FeedItem])
+        case failure(Error)
+    }
+
     init(client: HTTPClient, url: URL) {
         self.client = client
         self.url = url
     }
 
-    func load(completion: @escaping (Error) -> Void) {
+    func load(completion: @escaping (Result) -> Void) {
         client.get(from: url, completion: { (result) in
 
             switch result {
             case .success(let response):
 //                if response.statusCode != 200 {
-                    completion(.invalidData)
+                completion(.failure(.invalidData))
 //                }
             case .failure(_):
-                completion(.connectivity)
+                completion(.failure(.connectivity))
             }
         })
     }
