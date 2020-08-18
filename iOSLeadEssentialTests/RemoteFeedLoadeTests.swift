@@ -71,45 +71,49 @@ class RemoteFeedLoadeTests: XCTestCase {
 
     func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
-        let item1 = FeedItem(
+        let item1 = makeFeedItem(
             id: UUID(),
-            description: nil,
-            location: nil,
             imageURL: URL(string: "https://www.youtube.com/")!
         )
-
-        let item1JSON = [
-            "id": item1.id.uuidString,
-            "image": item1.imageURL.absoluteString
-        ]
-
-        let item2 = FeedItem(
+        let item2 = makeFeedItem(
             id: UUID(),
             description: "a description",
             location: "a location",
-            imageURL: URL(string: "https://www.google.com/")!
+            imageURL: URL(string: "https://www.youtube.com/")!
         )
 
-        let item2JSON = [
-            "id": item2.id.uuidString,
-            "description": item2.description,
-            "location": item2.location,
-            "image": item2.imageURL.absoluteString
-        ]
-
-        let itemJSON = [
-            "items": [item1JSON, item2JSON]
-        ]
-
-        expect(sut, completeWithResult: .success([item1, item2]), when: {
-            let josnData = try! JSONSerialization.data(withJSONObject: itemJSON, options: [])
+        expect(sut, completeWithResult: .success([item1.model, item2.model]), when: {
+            let josnData = makeItemsJSON([item1.json, item2.json])
             client.complete(withStatusCode: 200, data: josnData)
         })
+    }
+
+    func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let json = try! JSONSerialization.data(withJSONObject: ["items": items], options: [])
+        return json
     }
 }
 
 // MARK: Helper
 private extension RemoteFeedLoadeTests {
+
+    func makeFeedItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
+        let item = FeedItem(
+            id: id,
+            description: description,
+            location: location,
+            imageURL: imageURL
+        )
+
+        let json = [
+            "id": item.id.uuidString,
+            "description": item.description,
+            "location": item.location,
+            "image": item.imageURL.absoluteString
+        ].compactMapValues { $0 }
+
+        return (item, json)
+    }
 
     func makeSUT(url: URL = URL(string: "https://www.youtube.com/")!) -> (sut:  RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -154,7 +158,7 @@ private extension RemoteFeedLoadeTests {
                 statusCode: code,
                 httpVersion: nil,
                 headerFields: nil
-            )!
+                )!
             messages[index].completion(.success((data, response)))
         }
     }
