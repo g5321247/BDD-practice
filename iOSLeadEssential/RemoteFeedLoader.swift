@@ -8,8 +8,11 @@
 
 import Foundation
 
+
 protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Result<HTTPURLResponse, Error>) -> Void)
+    typealias HTTPResult = Result<(Data, HTTPURLResponse), Error>
+
+    func get(from url: URL, completion: @escaping (HTTPResult) -> Void)
 }
 
 struct RemoteFeedLoader {
@@ -31,9 +34,9 @@ struct RemoteFeedLoader {
 
             switch result {
             case .success(let response):
-                if response.statusCode != 200 {
+//                if response.statusCode != 200 {
                     completion(.invalidData)
-                }
+//                }
             case .failure(_):
                 completion(.connectivity)
             }
