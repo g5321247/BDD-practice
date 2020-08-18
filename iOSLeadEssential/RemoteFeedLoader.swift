@@ -37,9 +37,8 @@ struct RemoteFeedLoader {
         client.get(from: url, completion: { (result) in
 
             switch result {
-            case .success(let data, _):
-//                if response.statusCode != 200 {
-                if let root = try? JSONDecoder().decode(Root.self, from: data) {
+            case let .success((data, response)):
+                if response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) {
                     completion(.success(root.items))
                 } else {
                     completion(.failure(.invalidData))
