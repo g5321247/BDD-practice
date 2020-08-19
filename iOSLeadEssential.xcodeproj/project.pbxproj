@@ -62,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C89DAC9324EDE777003FCB49 /* Feed Loader */ = {
+			isa = PBXGroup;
+			children = (
+				C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */,
+			);
+			path = "Feed Loader";
+			sourceTree = "<group>";
+		};
 		C8BE044C24E7B77000D080C4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +107,7 @@
 		C8BE046E24E7B77400D080C4 /* iOSLeadEssentialTests */ = {
 			isa = PBXGroup;
 			children = (
-				C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */,
+				C89DAC9324EDE777003FCB49 /* Feed Loader */,
 				C8BE047124E7B77400D080C4 /* Info.plist */,
 			);
 			path = iOSLeadEssentialTests;
