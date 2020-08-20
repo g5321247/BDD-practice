@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RemoteFeedLoader {
+class RemoteFeedLoader {
     private let client: HTTPClient
     private let url: URL
 
@@ -28,12 +28,12 @@ struct RemoteFeedLoader {
     }
 
     func load(completion: @escaping (Result) -> Void) {
-        client.get(from: url, completion: { (result) in
-
+        client.get(from: url, completion: { [weak self] (result) in
+            guard self != nil else { return }
             switch result {
             case let .success((data, response)):
                 do {
-                    let items = try FeedItemMapper.map(data, response)
+                    let items = try RemoteFeedLoader.map(data, response)
                     completion(.success(items))
                 } catch {
                     completion(.failure(.invalidData))
@@ -44,6 +44,15 @@ struct RemoteFeedLoader {
             }
         })
     }
-}
 
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedItem] {
+
+        do {
+            let items = try FeedItemMapper.map(data, response)
+            return items
+        } catch {
+            throw Error.invalidData
+        }
+    }
+}
 
