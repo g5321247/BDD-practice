@@ -88,33 +88,10 @@ class RemoteFeedLoadeTests: XCTestCase {
             client.complete(withStatusCode: 200, data: josnData)
         })
     }
-
-    func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = try! JSONSerialization.data(withJSONObject: ["items": items], options: [])
-        return json
-    }
 }
 
 // MARK: Helper
 private extension RemoteFeedLoadeTests {
-
-    func makeFeedItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
-        let item = FeedItem(
-            id: id,
-            description: description,
-            location: location,
-            imageURL: imageURL
-        )
-
-        let json = [
-            "id": item.id.uuidString,
-            "description": item.description,
-            "location": item.location,
-            "image": item.imageURL.absoluteString
-        ].compactMapValues { $0 }
-
-        return (item, json)
-    }
 
     func makeSUT(url: URL = URL(string: "https://www.youtube.com/")!) -> (sut:  RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -138,6 +115,7 @@ private extension RemoteFeedLoadeTests {
     }
 
     class HTTPClientSpy: HTTPClient {
+        // closure retain here, it might cause retain cycle
         var messages: [(url: URL, completion: (HTTPResult) -> Void)] = []
 
         var requestURLs: [URL] {
@@ -162,5 +140,28 @@ private extension RemoteFeedLoadeTests {
                 )!
             messages[index].completion(.success((data, response)))
         }
+    }
+
+    func makeFeedItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
+        let item = FeedItem(
+            id: id,
+            description: description,
+            location: location,
+            imageURL: imageURL
+        )
+
+        let json = [
+            "id": item.id.uuidString,
+            "description": item.description,
+            "location": item.location,
+            "image": item.imageURL.absoluteString
+        ].compactMapValues { $0 }
+
+        return (item, json)
+    }
+
+    func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let json = try! JSONSerialization.data(withJSONObject: ["items": items], options: [])
+        return json
     }
 }
