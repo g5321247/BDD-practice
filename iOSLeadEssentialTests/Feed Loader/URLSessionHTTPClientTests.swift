@@ -9,11 +9,19 @@
 import XCTest
 @testable import iOSLeadEssential
 
+protocol HTTPSession {
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPSessionTask
+}
+
+protocol HTTPSessionTask {
+    func resume()
+}
+
 class URLSessionHTTPClient {
 
-    let session: URLSession
+    let session: HTTPSession
 
-    init(session: URLSession) {
+    init(session: HTTPSession) {
         self.session = session
     }
 
@@ -67,19 +75,19 @@ class URLSessionHTTPClientTests: XCTestCase {
 }
 
 private extension URLSessionHTTPClientTests {
-    class URLSessionSpy: URLSession {
+    class URLSessionSpy: HTTPSession {
         private var stubs = [URL: Stub]()
 
         private struct Stub {
-            let task: URLSessionDataTask
+            let task: HTTPSessionTask
             let error: Error?
         }
 
-        func stub(with url: URL, dataTask: URLSessionDataTask = URLSessionDataTaskSpy(), error: Error? = nil) {
+        func stub(with url: URL, dataTask: HTTPSessionTask = URLSessionDataTaskSpy(), error: Error? = nil) {
             stubs[url] = Stub(task: dataTask, error: error)
         }
 
-        override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPSessionTask {
 
             guard let stub = stubs[url] else {
                 fatalError("Couldn't find stub for \(url)")
@@ -90,11 +98,14 @@ private extension URLSessionHTTPClientTests {
         }
     }
 
-    class URLSessionDataTaskFake: URLSessionDataTask {}
+    class URLSessionDataTaskFake: HTTPSessionTask {
+        func resume() {
+        }
+    }
 
-    class URLSessionDataTaskSpy: URLSessionDataTask {
+    class URLSessionDataTaskSpy: HTTPSessionTask {
         var count = 0
-        override func resume() {
+        func resume() {
             count += 1
         }
     }
