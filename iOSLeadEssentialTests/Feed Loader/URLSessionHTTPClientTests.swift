@@ -31,8 +31,8 @@ class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_failOnRequestError() {
         URLProtocolStub.startInterceptingRequest()
         let url = URL(string: "http://anyURL.com")!
-        let error = NSError(domain: "", code: 1)
-        URLProtocolStub.stub(with: url, error: error)
+        let error = NSError(domain: "Any error", code: 1)
+        URLProtocolStub.stub(with: url, data: nil, response: nil, error: error)
 
         let exp = expectation(description: "Wait for completion")
 
@@ -59,11 +59,13 @@ private extension URLSessionHTTPClientTests {
         private static var stubs = [URL: Stub]()
 
         private struct Stub {
+            let data: Data?
+            let response: URLResponse?
             let error: Error?
         }
 
-        static func stub(with url: URL, error: Error? = nil) {
-            stubs[url] = Stub(error: error)
+        static func stub(with url: URL, data: Data?, response: URLResponse?, error: Error?) {
+            stubs[url] = Stub(data: data, response: response, error: error)
         }
 
         static func startInterceptingRequest() {
