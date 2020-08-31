@@ -39,9 +39,8 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getFromURL_performGetRequestWithURL() {
-
         let url = URL(string: "http://anyURL.com")!
-        let sut = URLSessionHTTPClient()
+        let sut = makeSUT()
         let exp = expectation(description: "Wait for completion")
 
         URLProtocolStub.observeRequsets { (request) in
@@ -63,7 +62,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
         let exp = expectation(description: "Wait for completion")
 
-        let sut = URLSessionHTTPClient()
+        let sut = makeSUT()
         sut.get(from: url) { result in
             switch result {
             case let .failure(receivedError as NSError):
@@ -81,6 +80,19 @@ class URLSessionHTTPClientTests: XCTestCase {
 }
 
 private extension URLSessionHTTPClientTests {
+
+    func makeSUT() -> URLSessionHTTPClient {
+        let sut = URLSessionHTTPClient()
+        trackForMemoryLeak(sut)
+        return sut
+    }
+
+    func trackForMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been delocated. Potential memory leak" ,file:file, line: line)
+        }
+    }
+
     class URLProtocolStub: URLProtocol {
         private static var stub: Stub?
         private static var requestObserver: ((URLRequest) -> Void)?
