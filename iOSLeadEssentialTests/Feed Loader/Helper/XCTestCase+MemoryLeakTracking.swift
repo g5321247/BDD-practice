@@ -13,6 +13,5 @@ extension XCTestCase {
         addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "Instance should have been delocated. Potential memory leak" ,file:file, line: line)
         }
-
     }
 }
