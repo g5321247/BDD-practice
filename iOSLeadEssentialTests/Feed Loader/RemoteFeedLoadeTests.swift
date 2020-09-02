@@ -121,12 +121,6 @@ private extension RemoteFeedLoadeTests {
         return (sut: sut, client: client)
     }
 
-    func trackForMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been delocated. Potential memory leak" ,file:file, line: line)
-        }
-
-    }
 
     func expect(_ sut: RemoteFeedLoader, completeWithResult expectedResult: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
