@@ -9,6 +9,7 @@
 import XCTest
 @testable import iOSLeadEssential
 
+// 在測試的保護下，即使物件改成 URLSession 的 extension，跑測試還是沒問題
 class URLSessionHTTPClient {
 
     let session: URLSession
@@ -60,14 +61,37 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getFromURL_failOnRequestError() {
-        let requestError = NSError(domain: "Any error", code: 1)
+        let requestError = anyNSError()
         let receivedError = resultErrorFor(data: nil, response: nil, error: requestError)
         XCTAssertEqual(receivedError as NSError?, requestError)
     }
 
+    func anyNSError() -> NSError {
+        return NSError(domain: "Any error", code: 1)
+    }
 
-    func test_getFromURL_failOnAllNilValues() {
+    func anyData() -> Data {
+        return Data("anyData".utf8)
+    }
+
+    func anyHTTPURLResponse() -> HTTPURLResponse {
+        return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
+    }
+
+    func nonHTTPURLResponse() -> URLResponse {
+        return URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+    }
+
+    func test_getFromURL_failOnAllInvalidRepresentationCases() {
         XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPURLResponse(), error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPURLResponse(), error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nil, error: anyNSError()))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPURLResponse(), error: anyNSError()))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPURLResponse(), error: anyNSError()))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nonHTTPURLResponse(), error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nonHTTPURLResponse(), error: anyNSError()))
     }
 
 
