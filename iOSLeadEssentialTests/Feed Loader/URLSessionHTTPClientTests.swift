@@ -10,7 +10,7 @@ import XCTest
 @testable import iOSLeadEssential
 
 // 在測試的保護下，即使物件改成 URLSession 的 extension，跑測試還是沒問題
-class URLSessionHTTPClient {
+class URLSessionHTTPClient: HTTPClient {
 
     let session: URLSession
 
@@ -164,7 +164,7 @@ private extension URLSessionHTTPClientTests {
         return URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     }
 
-    func makeSUT(file: StaticString = #file, line: UInt = #line) -> URLSessionHTTPClient {
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
         let sut = URLSessionHTTPClient()
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
