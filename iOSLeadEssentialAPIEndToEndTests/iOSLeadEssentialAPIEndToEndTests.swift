@@ -9,7 +9,6 @@
 import XCTest
 @testable import iOSLeadEssential
 
-
 class iOSLeadEssentialAPIEndToEndTests: XCTestCase {
 
     func test_EndToEndTestSeverGetFeedLoaderResult_matchFixedAccountData() {
@@ -32,11 +31,14 @@ class iOSLeadEssentialAPIEndToEndTests: XCTestCase {
         }
     }
 
-    private func getFeedResult() -> RemoteFeedLoader.Result? {
+    private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> RemoteFeedLoader.Result? {
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
         let client = URLSessionHTTPClient()
         let loader = RemoteFeedLoader(client: client, url: testServerURL)
 
+        trackForMemoryLeak(client, file: file, line: line)
+        trackForMemoryLeak(loader, file: file, line: line))
+        
         let exp = expectation(description: "Wait for load completion")
         var receivedResult: RemoteFeedLoader.Result?
 
