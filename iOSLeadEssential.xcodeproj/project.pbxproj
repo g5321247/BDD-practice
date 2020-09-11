@@ -21,11 +21,19 @@
 		C8BE046524E7B77400D080C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8BE046324E7B77400D080C4 /* LaunchScreen.storyboard */; };
 		C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */; };
 		C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */; };
+		C8E810872508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */; };
 		C8EDD5E624FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		C8BE046C24E7B77400D080C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8BE044D24E7B77000D080C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8BE045424E7B77000D080C4;
+			remoteInfo = iOSLeadEssential;
+		};
+		C8E810892508543F006225F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C8BE044D24E7B77000D080C4 /* Project object */;
 			proxyType = 1;
@@ -53,6 +61,9 @@
 		C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoadeTests.swift; sourceTree = "<group>"; };
 		C8BE047124E7B77400D080C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		C8E810842508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLeadEssentialAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLeadEssentialAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		C8E810882508543F006225F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +76,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C8BE046824E7B77400D080C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8E810812508543F006225F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -109,6 +127,7 @@
 			children = (
 				C8BE045724E7B77000D080C4 /* iOSLeadEssential */,
 				C8BE046E24E7B77400D080C4 /* iOSLeadEssentialTests */,
+				C8E810852508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests */,
 				C8BE045624E7B77000D080C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +137,7 @@
 			children = (
 				C8BE045524E7B77000D080C4 /* iOSLeadEssential.app */,
 				C8BE046B24E7B77400D080C4 /* iOSLeadEssentialTests.xctest */,
+				C8E810842508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +165,15 @@
 				C8BE047124E7B77400D080C4 /* Info.plist */,
 			);
 			path = iOSLeadEssentialTests;
+			sourceTree = "<group>";
+		};
+		C8E810852508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */,
+				C8E810882508543F006225F4 /* Info.plist */,
+			);
+			path = iOSLeadEssentialAPIEndToEndTests;
 			sourceTree = "<group>";
 		};
 		C8EDD5E724FF1903007F89E4 /* Helper */ = {
@@ -193,6 +222,24 @@
 			productReference = C8BE046B24E7B77400D080C4 /* iOSLeadEssentialTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C8E810832508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8E8108D2508543F006225F4 /* Build configuration list for PBXNativeTarget "iOSLeadEssentialAPIEndToEndTests" */;
+			buildPhases = (
+				C8E810802508543F006225F4 /* Sources */,
+				C8E810812508543F006225F4 /* Frameworks */,
+				C8E810822508543F006225F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8E8108A2508543F006225F4 /* PBXTargetDependency */,
+			);
+			name = iOSLeadEssentialAPIEndToEndTests;
+			productName = iOSLeadEssentialAPIEndToEndTests;
+			productReference = C8E810842508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +254,10 @@
 						CreatedOnToolsVersion = 11.5;
 					};
 					C8BE046A24E7B77400D080C4 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = C8BE045424E7B77000D080C4;
+					};
+					C8E810832508543F006225F4 = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = C8BE045424E7B77000D080C4;
 					};
@@ -227,6 +278,7 @@
 			targets = (
 				C8BE045424E7B77000D080C4 /* iOSLeadEssential */,
 				C8BE046A24E7B77400D080C4 /* iOSLeadEssentialTests */,
+				C8E810832508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +295,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C8BE046924E7B77400D080C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8E810822508543F006225F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,6 +337,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8E810802508543F006225F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8E810872508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -285,6 +352,11 @@
 			isa = PBXTargetDependency;
 			target = C8BE045424E7B77000D080C4 /* iOSLeadEssential */;
 			targetProxy = C8BE046C24E7B77400D080C4 /* PBXContainerItemProxy */;
+		};
+		C8E8108A2508543F006225F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8BE045424E7B77000D080C4 /* iOSLeadEssential */;
+			targetProxy = C8E810892508543F006225F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -496,6 +568,44 @@
 			};
 			name = Release;
 		};
+		C8E8108B2508543F006225F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iOSLeadEssentialAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.george.iOSLeadEssentialAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSLeadEssential.app/iOSLeadEssential";
+			};
+			name = Debug;
+		};
+		C8E8108C2508543F006225F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iOSLeadEssentialAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.george.iOSLeadEssentialAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSLeadEssential.app/iOSLeadEssential";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -522,6 +632,15 @@
 			buildConfigurations = (
 				C8BE047824E7B77400D080C4 /* Debug */,
 				C8BE047924E7B77400D080C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8E8108D2508543F006225F4 /* Build configuration list for PBXNativeTarget "iOSLeadEssentialAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8E8108B2508543F006225F4 /* Debug */,
+				C8E8108C2508543F006225F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
