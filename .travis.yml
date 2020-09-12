@@ -1,0 +1,4 @@
+os: osx
+osx_image: xcode11.5.1
+language: swift
+script: xcodebuild clean build test -project iOSLeadEssential.xcodeproj -scheme "CI" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=13.5,name=iPhone 11"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
