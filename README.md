@@ -1,4 +1,6 @@
 # Spec
+[![Build Status](https://travis-ci.com/g5321247/BDD-practice.svg?branch=master)](https://travis-ci.com/g5321247/BDD-practice)
+
 ## Story
 Customer requests to see their image feed
 
