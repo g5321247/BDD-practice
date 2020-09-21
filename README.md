@@ -14,10 +14,10 @@ Customer requests to see their image feed
 3. So I can always enjoy the newest images of my friends
 
 Scenarios (Acceptance criteria)
-`Given` customer has connectivity 
-`When` the customer requests to see their feed
-`Then` the app should display latest feed from remote
-`And` replace the cache with the new feed
+- `Given` customer has connectivity 
+- `When` the customer requests to see their feed
+- `Then` the app should display latest feed from remote
+- `And` replace the cache with the new feed
 
 ## Narrative #2
 
@@ -26,10 +26,18 @@ Scenarios (Acceptance criteria)
 3. So I can always enjoy image with my friends
 
 Scenarios (Acceptance criteria)
-`Given` customer has no connectivity 
-`And`  there’s a cached version of the feed
-`When` the customer requests to see their feed
-`Then` the app should display latest feed from cached
+- `Given` customer has no connectivity 
+- `And`  there’s a cache version of the feed
+- `And`  the cache is less than 7 days old 
+- `When` the customer requests to see their feed
+- `Then` the app should display latest feed from cached
+
+Scenarios (Acceptance criteria)
+- `Given` customer has no connectivity 
+- `And`  there’s a cache version of the feed
+- `And`  the cache is 7 days old or more
+- `When` the customer requests to see their feed
+- `Then` the app should display latest feed from cached
 
 Scenarios (Acceptance criteria)
 `Given` customer has no connectivity 
@@ -38,7 +46,7 @@ Scenarios (Acceptance criteria)
 `Then` the app should display error message
 
 # Use Case 
-## Load Feed 
+## Load Feed From Remote Use Case
 ### Data
 - URL
  
@@ -55,29 +63,42 @@ Scenarios (Acceptance criteria)
 ### No connectivity – error course (sad path):
 1. System delivers connectivity error.
 
-## Load Feed Fallback (Cache) Use Case
-### Data
-- URL
+## Load Feed From Cache Use Case
 
 ### Primary Course(happy path)
-1. Execute “Retrieve Feed Items” command with above data.
+1. Execute “Load Feed Items” command with above data.
 2. System fetches feed data from cache.
-3. System creates feed items from cached data.
-4. System delivers feed items.
+3. System validates cache is less than 7 days old.
+4. System creates feed items from cached data.
+5. System delivers feed items.
 
-### Empty cached(sad path)
+### Error course(sad path)
+1. System delivers error.
+
+### Expired cache(sad path)
+1. System deletes cache.
+2. System delivers no feed images.
+
+### Empty cache(sad path)
 1. System delivers no feed images.
 
 ## Save Feed Items Use Case
-(1) input
+### Data
 Image Feed
 
 (2) Primary course (happy path)
 1. Execute “Save Feed Items” command with above data.
-2. System encodes feed items.
-3. System timestamps the new cache.
-4. System replaces the cache with new data.
-5. System delivers a success message.
+2. System deletes the old cache data.
+3. System encodes feed items.
+4. System timestamps the new cache.
+5. System saves the new cache data.
+6. System delivers a success message.
+
+### Deleting error course(sad path)
+1. System delivers error.
+
+### Saving error course(sad path)
+1. System delivers error.
 
 # Flowchart
 ![](https://i.imgur.com/ngke8wm.png)
