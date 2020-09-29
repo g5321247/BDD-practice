@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40D46F32522E15D00B34C6F /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D46F22522E15D00B34C6F /* CacheFeedUseCaseTests.swift */; };
 		C4D1389924EB7DFA009FE2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D1389824EB7DFA009FE2A1 /* Main.storyboard */; };
 		C8132CA924EFC6CF005C6F78 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8132CA824EFC6CF005C6F78 /* FeedLoader.swift */; };
 		C8311842250BB6D8007D8A7E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C40D46F22522E15D00B34C6F /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		C4D1389824EB7DFA009FE2A1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C8132CA824EFC6CF005C6F78 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		C839166024EB825200E96B5A /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				C8EDD5E724FF1903007F89E4 /* Helper */,
 				C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */,
+				C40D46F22522E15D00B34C6F /* CacheFeedUseCaseTests.swift */,
 				C85171C424F2826800C6F27A /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Feed Loader";
@@ -334,6 +337,7 @@
 			files = (
 				C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */,
 				C8EDD5E624FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				C40D46F32522E15D00B34C6F /* CacheFeedUseCaseTests.swift in Sources */,
 				C85171C524F2826800C6F27A /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
