@@ -30,13 +30,16 @@ class LocalFeedLoader {
 class FeedStore {
     typealias Completion = (Error?) -> Void
 
-    var deleteCacheCount = 0
     private var completions: [Completion] = []
-    var insertions: [(items: [FeedItem], timestamp: Date)] = []
+    var messages: [ReceiveMessage] = []
+
+    enum ReceiveMessage: Equatable {
+        case delete
+        case insert([FeedItem], Date)
+    }
 
     func deleteCacheFeed(completion: @escaping Completion) {
-        deleteCacheCount += 1
-
+        messages.append(.delete)
         completions.append(completion)
     }
 
@@ -49,7 +52,7 @@ class FeedStore {
     }
 
     func insert(_ items: [FeedItem], timestamp: Date) {
-        insertions.append((items: items, timestamp: timestamp))
+        messages.append(.insert(items, timestamp))
     }
 
 }
@@ -59,7 +62,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_init_doesNotDeleteCacheUponCreation() {
         let (_, store) = makeSUT()
 
-        XCTAssertEqual(store.deleteCacheCount, 0)
+        XCTAssertEqual(store.messages.count, 0)
     }
 
     func test_save_requestCacheDeletion() {
@@ -68,7 +71,7 @@ class CacheFeedUseCaseTests: XCTestCase {
 
         sut.save(items)
 
-        XCTAssertEqual(store.deleteCacheCount, 1)
+        XCTAssertEqual(store.messages, [.delete])
     }
 
     func test_save_doesNotRequestInsertionOnCacheDeletion() {
@@ -77,7 +80,7 @@ class CacheFeedUseCaseTests: XCTestCase {
 
         sut.save(items)
         store.completeDeletion(with: anyNSError(), at: 0)
-        XCTAssertEqual(store.insertions.count, 0)
+        XCTAssertEqual(store.messages, [.delete])
     }
 
     func test_save_requestInsertionWithTimestampOnSuccessfulDeletion() {
@@ -87,9 +90,7 @@ class CacheFeedUseCaseTests: XCTestCase {
 
         sut.save(items)
         store.completeDeletionSuccess(at: 0)
-        XCTAssertEqual(store.insertions.count, 1)
-        XCTAssertEqual(store.insertions.first?.items, items)
-        XCTAssertEqual(store.insertions.first?.timestamp, timestamp)
+        XCTAssertEqual(store.messages, [.delete, .insert(items, timestamp)])
     }
 
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
