@@ -29,45 +29,12 @@ class LocalFeedLoader {
     }
 }
 
-class FeedStore {
+protocol FeedStore {
     typealias DeleteCompletion = (Error?) -> Void
     typealias InsertCompletion = (Error?) -> Void
 
-    private var deleteCompletions: [DeleteCompletion] = []
-    private var insertCompletions: [InsertCompletion] = []
-
-    var messages: [ReceiveMessage] = []
-
-    enum ReceiveMessage: Equatable {
-        case delete
-        case insert([FeedItem], Date)
-    }
-
-    func deleteCacheFeed(completion: @escaping DeleteCompletion) {
-        messages.append(.delete)
-        deleteCompletions.append(completion)
-    }
-
-    func completeDeletion(with error: Error, at index: Int = 0) {
-        deleteCompletions[index](error)
-    }
-
-    func completeDeletionSuccess(at index: Int = 0) {
-        deleteCompletions[index](nil)
-    }
-
-    func insert(_ items: [FeedItem], timestamp: Date, compltion: @escaping InsertCompletion) {
-        messages.append(.insert(items, timestamp))
-        insertCompletions.append(compltion)
-    }
-
-    func completeInsertion(with error: Error, at index: Int = 0) {
-        insertCompletions[index](error)
-    }
-
-    func completeInsertionSuccessfully(at index: Int = 0) {
-        insertCompletions[index](nil)
-    }
+    func deleteCacheFeed(completion: @escaping DeleteCompletion)
+    func insert(_ items: [FeedItem], timestamp: Date, compltion: @escaping InsertCompletion)
 }
 
 class CacheFeedUseCaseTests: XCTestCase {
@@ -136,12 +103,10 @@ class CacheFeedUseCaseTests: XCTestCase {
 
     private func expect(_ sut: LocalFeedLoader, with expectedError: NSError?, when: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
-        let items = [uniqueItem(), uniqueItem()]
-
         let expect = expectation(description: "Wait for save completion")
         var receiveError: Error?
 
-        sut.save(items) { error in
+        sut.save([uniqueItem()]) { error in
             receiveError = error
             expect.fulfill()
         }
@@ -152,8 +117,8 @@ class CacheFeedUseCaseTests: XCTestCase {
         XCTAssertEqual(receiveError as NSError?, expectedError, file: file, line: line)
     }
 
-    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
-        let store = FeedStore()
+    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
+        let store = FeedStoreSpy()
         let sut = LocalFeedLoader(store: store, currentDate: currentDate)
 
         trackForMemoryLeak(store, file: file, line: line)
@@ -174,4 +139,45 @@ class CacheFeedUseCaseTests: XCTestCase {
         return NSError(domain: "Any error", code: 1)
     }
 
+}
+
+extension CacheFeedUseCaseTests {
+    private class FeedStoreSpy: FeedStore {
+
+        private var deleteCompletions: [DeleteCompletion] = []
+        private var insertCompletions: [InsertCompletion] = []
+
+        var messages: [ReceiveMessage] = []
+
+        enum ReceiveMessage: Equatable {
+            case delete
+            case insert([FeedItem], Date)
+        }
+
+        func deleteCacheFeed(completion: @escaping DeleteCompletion) {
+            messages.append(.delete)
+            deleteCompletions.append(completion)
+        }
+
+        func completeDeletion(with error: Error, at index: Int = 0) {
+            deleteCompletions[index](error)
+        }
+
+        func completeDeletionSuccess(at index: Int = 0) {
+            deleteCompletions[index](nil)
+        }
+
+        func insert(_ items: [FeedItem], timestamp: Date, compltion: @escaping InsertCompletion) {
+            messages.append(.insert(items, timestamp))
+            insertCompletions.append(compltion)
+        }
+
+        func completeInsertion(with error: Error, at index: Int = 0) {
+            insertCompletions[index](error)
+        }
+
+        func completeInsertionSuccessfully(at index: Int = 0) {
+            insertCompletions[index](nil)
+        }
+    }
 }
