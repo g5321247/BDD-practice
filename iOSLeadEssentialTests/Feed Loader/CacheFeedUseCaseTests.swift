@@ -18,8 +18,9 @@ class LocalFeedLoader {
         self.currentDate = currentDate
     }
 
-    func save(_ items: [FeedItem]) {
+    func save(_ items: [FeedItem], completion: @escaping (Error?) -> Void) {
         store.deleteCacheFeed { [unowned self] error in
+            completion(error)
             if error == nil {
                 self.store.insert(items, timestamp: self.currentDate())
             }
@@ -69,7 +70,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let items = [uniqueItem(), uniqueItem()]
 
-        sut.save(items)
+        sut.save(items) { _ in }
 
         XCTAssertEqual(store.messages, [.delete])
     }
@@ -78,7 +79,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let items = [uniqueItem(), uniqueItem()]
 
-        sut.save(items)
+        sut.save(items) { _ in }
         store.completeDeletion(with: anyNSError(), at: 0)
         XCTAssertEqual(store.messages, [.delete])
     }
@@ -88,9 +89,27 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { return timestamp })
         let items = [uniqueItem(), uniqueItem()]
 
-        sut.save(items)
+        sut.save(items) { _ in }
         store.completeDeletionSuccess(at: 0)
         XCTAssertEqual(store.messages, [.delete, .insert(items, timestamp)])
+    }
+
+    func test_save_failOnDeletionError() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem(), uniqueItem()]
+
+        let expect = expectation(description: "Wait for save completion")
+        var captureError: Error?
+
+        sut.save(items) { error in
+            captureError = error
+            expect.fulfill()
+        }
+
+        store.completeDeletion(with: anyNSError(), at: 0)
+        wait(for: [expect], timeout: 1.0)
+
+        XCTAssertEqual(captureError as NSError?, anyNSError())
     }
 
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
