@@ -23,6 +23,7 @@
 		C8BE046524E7B77400D080C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8BE046324E7B77400D080C4 /* LaunchScreen.storyboard */; };
 		C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */; };
 		C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */; };
+		C8C099C82529975F00D71EB7 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */; };
 		C8E810872508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */; };
 		C8EDD5E624FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoadeTests.swift; sourceTree = "<group>"; };
 		C8BE047124E7B77400D080C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		C8E810842508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLeadEssentialAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLeadEssentialAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		C8E810882508543F006225F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				C8BE045A24E7B77000D080C4 /* SceneDelegate.swift */,
 				C8BE045C24E7B77000D080C4 /* ViewController.swift */,
 				C4D1389824EB7DFA009FE2A1 /* Main.storyboard */,
+				C8C099C62529974600D71EB7 /* Feed Cache */,
 				C8132CA724EFC6BA005C6F78 /* Feed Feature */,
 				C89DAC9424EDE8D6003FCB49 /* Feed API */,
 				C8BE046124E7B77400D080C4 /* Assets.xcassets */,
@@ -169,6 +172,14 @@
 				C8BE047124E7B77400D080C4 /* Info.plist */,
 			);
 			path = iOSLeadEssentialTests;
+			sourceTree = "<group>";
+		};
+		C8C099C62529974600D71EB7 /* Feed Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */,
+			);
+			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
 		C8E810852508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests */ = {
@@ -323,6 +334,7 @@
 				C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */,
 				C89DAC9624EDE8E9003FCB49 /* HTTPClient.swift in Sources */,
 				C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */,
+				C8C099C82529975F00D71EB7 /* LocalFeedLoader.swift in Sources */,
 				C839166124EB825200E96B5A /* FeedItem.swift in Sources */,
 				C89DAC9824EDE94C003FCB49 /* FeedItemMapper.swift in Sources */,
 				C8132CA924EFC6CF005C6F78 /* FeedLoader.swift in Sources */,
