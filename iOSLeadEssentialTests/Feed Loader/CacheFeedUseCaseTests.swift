@@ -78,7 +78,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let timestamp = Date()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: { return timestamp })
 
-        var receiveResult: [Error?] = []
+        var receiveResult: [LocalFeedLoader.SaveResult] = []
         sut?.save([], completion: { error in
             receiveResult.append(error)
         })
@@ -93,7 +93,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let timestamp = Date()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: { return timestamp })
 
-        var receiveResult: [Error?] = []
+        var receiveResult: [LocalFeedLoader.SaveResult] = []
         sut?.save([], completion: { error in
             receiveResult.append(error)
         })
