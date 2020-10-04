@@ -24,6 +24,7 @@
 		C8BE047024E7B77400D080C4 /* RemoteFeedLoadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE046F24E7B77400D080C4 /* RemoteFeedLoadeTests.swift */; };
 		C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */; };
 		C8C099C82529975F00D71EB7 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */; };
+		C8C099CA2529981700D71EB7 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C099C92529981700D71EB7 /* FeedStore.swift */; };
 		C8E810872508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */; };
 		C8EDD5E624FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		C8BE047124E7B77400D080C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		C8C099C92529981700D71EB7 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		C8E810842508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLeadEssentialAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E810862508543F006225F4 /* iOSLeadEssentialAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLeadEssentialAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		C8E810882508543F006225F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				C8C099C72529975E00D71EB7 /* LocalFeedLoader.swift */,
+				C8C099C92529981700D71EB7 /* FeedStore.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8BE045D24E7B77000D080C4 /* ViewController.swift in Sources */,
+				C8C099CA2529981700D71EB7 /* FeedStore.swift in Sources */,
 				C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */,
 				C89DAC9624EDE8E9003FCB49 /* HTTPClient.swift in Sources */,
 				C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */,
