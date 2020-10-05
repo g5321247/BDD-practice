@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C40D46F32522E15D00B34C6F /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D46F22522E15D00B34C6F /* CacheFeedUseCaseTests.swift */; };
+		C40D8482252B246200430563 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D8481252B246200430563 /* RemoteFeedItem.swift */; };
 		C4D1389924EB7DFA009FE2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D1389824EB7DFA009FE2A1 /* Main.storyboard */; };
 		C8132CA924EFC6CF005C6F78 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8132CA824EFC6CF005C6F78 /* FeedLoader.swift */; };
 		C8311842250BB6D8007D8A7E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDD5E524FF17E4007F89E4 /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		C40D46F22522E15D00B34C6F /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		C40D8481252B246200430563 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
 		C4D1389824EB7DFA009FE2A1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C8132CA824EFC6CF005C6F78 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		C839166024EB825200E96B5A /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				C8BE047A24E7B7DC00D080C4 /* RemoteFeedLoader.swift */,
 				C89DAC9724EDE94C003FCB49 /* FeedItemMapper.swift */,
+				C40D8481252B246200430563 /* RemoteFeedItem.swift */,
 				C89DAC9524EDE8E9003FCB49 /* HTTPClient.swift */,
 				C88CD4F92505A68300AEF225 /* URLSessionHTTPClient.swift */,
 			);
@@ -335,6 +338,7 @@
 			files = (
 				C8BE045D24E7B77000D080C4 /* ViewController.swift in Sources */,
 				C8C099CA2529981700D71EB7 /* FeedStore.swift in Sources */,
+				C40D8482252B246200430563 /* RemoteFeedItem.swift in Sources */,
 				C8BE045924E7B77000D080C4 /* AppDelegate.swift in Sources */,
 				C89DAC9624EDE8E9003FCB49 /* HTTPClient.swift in Sources */,
 				C8BE047C24E7B7EC00D080C4 /* RemoteFeedLoader.swift in Sources */,
